@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model DemoCode.Models.Product
+
+@{
+    DemoCode.Models.Product obj = (DemoCode.Models.Product)ViewData["product"];
+    if (obj == null)
+    {
+        <h1>Add New Product</h1>
+        using (Html.BeginForm("Add", "AddProduct", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="productName" class="fw-bold">Product Name</label>
+                @Html.TextBoxFor(model => obj.Name, new { @class = "form-control" })
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="prodDesc" class="fw-bold">Product Description</label>
+                @Html.TextBoxFor(model => obj.Desc, new { @class = "form-control" })
+                <small class="form-text text-muted">Please be precise and try to add all information possible.</small>
+            </div>
+            <br />
+
+            @Html.HiddenFor(model => obj.Imagelg, new { @class = "form-control" })
+            @Html.HiddenFor(model => obj.ImageSm, new { @class = "form-control" })
+
+            <br />
+            <div class="form-group">
+                <label for="productPrice" class="fw-bold">Product Price</label>
+                @Html.TextBoxFor(model => obj.Price, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="productPrice" class="fw-bold">Product Category</label>
+                @Html.TextBoxFor(model => obj.CategoryId, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="productPrice" class="fw-bold">Product Age Group</label>
+                @Html.TextBoxFor(model => obj.AgeGroup, new { @class = "form-control" })
+            </div>
+            <br />
+            <div class="form-group form-check">
+                @Html.CheckBoxFor(model => obj.IsActive, new { @class = "form-check-input" })
+                <label class="form-check-label fw-bold" for="isActive">Is Active?</label>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Submit Details</button>
+        }
+    }
+    else
+    {
+        <h1>Edit Product</h1>
+        <div class="row">
+            <div class="col-lg-6">
+                @using (Html.BeginForm("EditProduct", "AddProduct", FormMethod.Post))
+                {
+                    @Html.HiddenFor(model => obj.Id, new { @class = "form-control" })
+                    <div class="form-group">
+                        <label for="productName" class="fw-bold">Product Name</label>
+                        @Html.TextBoxFor(model => obj.Name, new { @class = "form-control" })
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="prodDesc" class="fw-bold">Product Description</label>
+                        @Html.TextBoxFor(model => obj.Desc, new { @class = "form-control" })
+                        <small class="form-text text-muted">Please be precise and try to add all information possible.</small>
+                    </div>
+                    <br />
+                    
+                    @Html.HiddenFor(model => obj.ImageSm, new { @class = "form-control" })
+                    <div class="form-group">
+                        <label for="productPrice" class="fw-bold">Product Price</label>
+                        @Html.TextBoxFor(model => obj.Imagelg, new { @class = "form-control" })
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="productPrice" class="fw-bold">Product Price</label>
+                        @Html.TextBoxFor(model => obj.Price, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice" class="fw-bold">Product Category</label>
+                        @Html.TextBoxFor(model => obj.CategoryId, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice" class="fw-bold">Product Age Group</label>
+                        @Html.TextBoxFor(model => obj.AgeGroup, new { @class = "form-control" })
+                    </div>
+                    <br />
+                    <div class="form-group form-check">
+                        @Html.CheckBoxFor(model => obj.IsActive, new { @class = "form-check-input" })
+                        <label class="form-check-label fw-bold" for="isActive">Is Active?</label>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-primary">Submit Details</button>
+                }
+            </div>
+            <div class="col-lg-6">
+                @{
+                    ViewBag.Title = "UploadFile";
+                }
+                <h4>UploadFile</h4>
+                @using (Html.BeginForm("UploadFile", "AddProduct", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div>
+                        @Html.HiddenFor(model => obj.Id, new { @class = "form-control" })
+                        @Html.TextBox("file", "", new { type = "file" }) <br />
+                        <input type="submit" value="Upload" />
+                        @ViewBag.Message
+                    </div>
+                }
+
+                <img src="~/Content/Images/@obj.Imagelg" width="100%" /> 
+            </div>
+        </div>        
+    }
+
+
+}
+
+
+
+
+
+
+
+
+

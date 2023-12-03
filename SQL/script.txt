@@ -1,0 +1,65 @@
+USE [TestDb]
+GO
+
+/****** Object:  Table [dbo].[Admin]    Script Date: 2023-11-25 10:25:03 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Admin](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Username] [nvarchar](50) NULL,
+	[Password] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+
+
+
+
+USE [TestDb]
+GO
+
+/****** Object:  Table [dbo].[Category]    Script Date: 2023-11-25 10:25:17 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Category](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[IsActive] [bit] NULL
+) ON [PRIMARY]
+GO
+
+
+
+
+
+USE [TestDb]
+GO
+
+/****** Object:  Table [dbo].[Product]    Script Date: 2023-11-25 10:25:26 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Product](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[CategoryId] [int] NULL,
+	[Desc] [nvarchar](50) NULL,
+	[Price] [float] NULL,
+	[Imagelg] [nvarchar](100) NULL,
+	[ImageSm] [nvarchar](100) NULL,
+	[AgeGroup] [nvarchar](20) NULL,
+	[IsActive] [bit] NULL
+) ON [PRIMARY]
+GO
+
+

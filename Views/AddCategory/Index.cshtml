@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model DemoCode.Models.Category
+<h1>&nbsp;</h1>
+
+@{
+    DemoCode.Models.Category obj = (DemoCode.Models.Category)ViewData["Category"];
+    if (obj == null)
+    {
+        using (Html.BeginForm("Add", "AddCategory", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="productName" class="fw-bold">Category Name</label>
+                @Html.TextBoxFor(model => obj.Name, new { @class = "form-control" })
+            </div>
+            <br />
+
+            <div class="form-group form-check">
+                @Html.CheckBoxFor(model => obj.IsActive, new { @class = "form-check-input" })
+                <label class="form-check-label fw-bold" for="isActive">Is Active?</label>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Submit Details</button>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("EditCategory", "AddCategory", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="CategoryId" class="fw-bold">Category Id:</label>
+                @Html.TextBoxFor(model => obj.Id, new { @class = "form-control", @readonly = true })
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="productName" class="fw-bold">Category Name</label>
+                @Html.TextBoxFor(model => obj.Name, new { @class = "form-control" })
+            </div>
+            <br />
+
+            <div class="form-group form-check">
+                @Html.CheckBoxFor(model => obj.IsActive, new { @class = "form-check-input" })
+                <label class="form-check-label fw-bold" for="isActive">Is Active?</label>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Submit Details</button>
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+

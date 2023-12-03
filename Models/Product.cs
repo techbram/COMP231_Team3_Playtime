@@ -23,8 +23,8 @@ namespace DemoCode.Models
         public double Price { get; set; }
 
         [Required]
-        public string Imagelg { get; set; }
-        
+        public string Imagelg { get; set; } 
+
         [Required]
         public string ImageSm { get; set; }
         

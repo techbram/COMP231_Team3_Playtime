@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoCode.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,20 @@ namespace DemoCode.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            return View();
+            Data objData = new Data();
+            List<Product> obj = objData.GetProducts();
+            ViewData["products"] = obj;
+            return View("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            Data objData = new Data();
+            objData.DeleteProduct(id);
+
+            List<Product> obj = objData.GetProducts();
+            ViewData["products"] = obj;
+            return View("Index");
         }
     }
 }
