@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoCode.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,18 +14,18 @@ namespace DemoCode.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult ValidateAdmin(Admin obj)
         {
-            ViewBag.Message = "Your application description page.";
+            Data objData = new Data();
+            bool result = false;
+            result = objData.ValidateAdmin(obj.Username, obj.Password);
+            if(result)
+            {
+                Session["ValidateAdmin"] = true;
+            }
 
-            return View();
+            return RedirectToAction("Index", "Product", new { area = "" });
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

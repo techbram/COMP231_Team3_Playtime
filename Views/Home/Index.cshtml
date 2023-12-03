@@ -1,25 +1,25 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+@model DemoCode.Models.Admin
 <div class="jumbotron">
     <h1>Admin Panel for Online Toy Store</h1>
 
-    @*@using (Html.BeginForm("Add", "AddCategory", FormMethod.Post))
+    @using (Html.BeginForm("ValidateAdmin", "Home", FormMethod.Post))
     {
-    <div class="form-group">
-        <label for="productName" class="fw-bold">Category Name</label>
-        @Html.TextBoxFor(model => obj.Name, new { @class = "form-control" })
-    </div>
-    <br />
+        <div class="form-group">
+            <label for="productName" class="fw-bold">Category Name</label>
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        </div>
+        <br />
 
-    <div class="form-group form-check">
-        @Html.CheckBoxFor(model => obj.IsActive, new { @class = "form-check-input" })
-        <label class="form-check-label fw-bold" for="isActive">Is Active?</label>
-    </div>
-    <br />
-    <button type="submit" class="btn btn-primary">Submit Details</button>
-    }*@
+        <div class="form-group form-check">
+            @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-check-input" })
+            <label class="form-check-label fw-bold" for="isActive">Is Active?</label>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit Details</button>
+    }
 
 
     <p class="lead">This admin panel will allow the store admin to manage toy invetory, and conduct day to day business operation.</p>

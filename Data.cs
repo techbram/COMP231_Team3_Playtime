@@ -417,6 +417,57 @@ namespace DemoCode
             }
         }
 
+        public bool ValidateAdmin(string username, string password)
+        {
+            bool result = false;
+
+            using (SqlConnection con = new SqlConnection(ConnStr))
+            {
+                con.Open();
+                DataSet ds = new DataSet();
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("select * from [Admin]  where Username = '"+ username+"' and [Password] = '" + password+ "' ", con);
+
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    da.Fill(ds);
+                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    {
+                        if (ds.Tables[0].Rows[0]["Username"] != null && ds.Tables[0].Rows[0]["Username"].ToString() != "")
+                        {
+                            if (ds.Tables[0].Rows[0]["Password"] != null && ds.Tables[0].Rows[0]["Password"].ToString() != "")
+                            {
+                                string uname = ds.Tables[0].Rows[0]["Username"].ToString();
+                                string pass = ds.Tables[0].Rows[0]["Password"].ToString();
+                                if(uname == username && pass == password)
+                                {
+                                    result = true; 
+                                    return result;
+                                }
+                            }
+                        }                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    ds.Dispose();
+                    con.Close();
+                    con.Dispose();
+                }
+                return result;
+            }
+
+
+
+
+            return result;
+        }
+
 
     }
 
