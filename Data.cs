@@ -135,7 +135,7 @@ namespace DemoCode
 
                         if (ds.Tables[0].Rows[0]["Desc"] != null && ds.Tables[0].Rows[0]["Desc"].ToString() != "")
                         {
-                            p.Name = ds.Tables[0].Rows[0]["Desc"].ToString();
+                            p.Desc = ds.Tables[0].Rows[0]["Desc"].ToString();
                         }
 
                         if (ds.Tables[0].Rows[0]["Price"] != null && ds.Tables[0].Rows[0]["Price"].ToString() != "")
