@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="jumbotron">
+    <img src="~/Content/Images/homepagebanner.jpg" height="200" />
+</div>
+
+@{
+    <div class="row">
+        @foreach (DemoCode.Models.Product obj1 in (List<DemoCode.Models.Product>
+            )ViewData["cat1products"])
+            {
+            <div class="col-lg-4">
+                <h4>@obj1.Name</h4>
+                <h5>@obj1.Desc</h5>
+                <img height="120" src="~/Content/Images/@obj1.Imagelg" />
+                <h4>$@obj1.Price</h4>
+                <button type="button" class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add To Cart</button>
+            </div>
+            }
+    </div>
+    <div class="row">
+        @foreach (DemoCode.Models.Product obj2 in (List<DemoCode.Models.Product>
+            )ViewData["cat2products"])
+            {
+            <div class="col-lg-4">
+                <h4>@obj2.Name</h4>
+                <h5>@obj2.Desc</h5>
+                <img height="120" src="~/Content/Images/@obj2.Imagelg" />
+                <h4>$@obj2.Price</h4>
+                <button type="button" class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add To Cart</button>
+            </div>
+            }
+    </div>
+    <div class="row">
+        @foreach (DemoCode.Models.Product obj3 in (List<DemoCode.Models.Product>)ViewData["cat3products"])
+        {
+            <div class="col-lg-4">
+                <h4>@obj3.Name</h4>
+                <h5>@obj3.Desc</h5>
+                <img height="120" src="~/Content/Images/@obj3.Imagelg" />
+                <h4>$@obj3.Price</h4>
+                <button type="button" class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add To Cart</button>
+            </div>
+        }
+    </div>
+    
+}

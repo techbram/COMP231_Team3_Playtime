@@ -4,9 +4,10 @@
 }
 
 @model DemoCode.Models.Product
-
 @{
     DemoCode.Models.Product obj = (DemoCode.Models.Product)ViewData["product"];
+    List<DemoCode.Models.Category> categories = (List <DemoCode.Models.Category>)ViewData["categories"];
+
     if (obj == null)
     {
         <h1>Add New Product</h1>
@@ -34,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label for="productPrice" class="fw-bold">Product Category</label>
-                @Html.TextBoxFor(model => obj.CategoryId, new { @class = "form-control" })
+                @Html.DropDownListFor(model => obj.CategoryId, new SelectList(categories, "Id", "Name"), new { @class = "form-control" })
             </div>
             <div class="form-group">
                 <label for="productPrice" class="fw-bold">Product Age Group</label>
@@ -71,8 +72,8 @@
                     
                     @Html.HiddenFor(model => obj.ImageSm, new { @class = "form-control" })
                     <div class="form-group">
-                        <label for="productPrice" class="fw-bold">Product Price</label>
-                        @Html.TextBoxFor(model => obj.Imagelg, new { @class = "form-control" })
+                        <label for="productPrice" class="fw-bold">Product Image</label>
+                        @Html.TextBoxFor(model => obj.Imagelg, new { @class = "form-control", @readonly = true })
                     </div>
                     <br />
                     <div class="form-group">
@@ -81,7 +82,7 @@
                     </div>
                     <div class="form-group">
                         <label for="productPrice" class="fw-bold">Product Category</label>
-                        @Html.TextBoxFor(model => obj.CategoryId, new { @class = "form-control" })
+                        @Html.DropDownListFor(model => obj.CategoryId, new SelectList(categories, "Id", "Name", obj.CategoryId), new { @class = "form-control" })
                     </div>
                     <div class="form-group">
                         <label for="productPrice" class="fw-bold">Product Age Group</label>

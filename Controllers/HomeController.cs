@@ -11,6 +11,8 @@ namespace DemoCode.Controllers
     {
         public ActionResult Index()
         {
+            Admin obj = new Admin();
+            ViewData["admin"] = obj;
             return View();
         }
 

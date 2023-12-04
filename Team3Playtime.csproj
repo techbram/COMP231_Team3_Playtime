@@ -125,6 +125,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlayTimeHomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Global.asax.cs">
@@ -146,6 +147,7 @@
     <Content Include="Content\Images\1-13223.jpg" />
     <Content Include="Content\Images\adminhome.jpg" />
     <Content Include="Content\Images\dahlia-is-called-orange-garden-royalty-free-image-512882246-1554743133.jpg" />
+    <Content Include="Content\Images\homepagebanner.jpg" />
     <Content Include="Content\SQL\SQLQuery.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -410,6 +412,7 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\AddCategory\Index.cshtml" />
     <Content Include="Views\AddProduct\Index.cshtml" />
+    <Content Include="Views\PlayTimeHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

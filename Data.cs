@@ -98,6 +98,89 @@ namespace DemoCode
             }
         }
 
+        public List<Product> GetProductsByCategory(int CategoryId)
+        {
+            List<Product> objlist = new List<Product>();
+            using (SqlConnection con = new SqlConnection(ConnStr))
+            {
+                con.Open();
+                DataSet ds = new DataSet();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("Select top 3 * from Product where CategoryId = " + CategoryId, con);
+                    
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    da.Fill(ds);
+                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    {
+
+                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                        {
+                            Product p = new Product();
+                            if (ds.Tables[0].Rows[i]["Id"] != null && ds.Tables[0].Rows[i]["Id"].ToString() != "")
+                            {
+                                p.Id = int.Parse(ds.Tables[0].Rows[i]["Id"].ToString());
+                            }
+
+                            if (ds.Tables[0].Rows[i]["Name"] != null && ds.Tables[0].Rows[i]["Name"].ToString() != "")
+                            {
+                                p.Name = ds.Tables[0].Rows[i]["Name"].ToString();
+                            }
+
+                            if (ds.Tables[0].Rows[i]["CategoryId"] != null && ds.Tables[0].Rows[i]["CategoryId"].ToString() != "")
+                            {
+                                p.CategoryId = int.Parse(ds.Tables[0].Rows[i]["CategoryId"].ToString());
+                            }
+
+                            if (ds.Tables[0].Rows[i]["Desc"] != null && ds.Tables[0].Rows[i]["Desc"].ToString() != "")
+                            {
+                                p.Desc = ds.Tables[0].Rows[i]["Desc"].ToString();
+                            }
+
+                            if (ds.Tables[0].Rows[i]["Price"] != null && ds.Tables[0].Rows[i]["Price"].ToString() != "")
+                            {
+                                p.Price = double.Parse(ds.Tables[0].Rows[i]["Price"].ToString());
+                            }
+
+                            if (ds.Tables[0].Rows[i]["Imagelg"] != null && ds.Tables[0].Rows[i]["Imagelg"].ToString() != "")
+                            {
+                                p.Imagelg = ds.Tables[0].Rows[i]["Imagelg"].ToString();
+                            }
+
+                            if (ds.Tables[0].Rows[i]["ImageSm"] != null && ds.Tables[0].Rows[i]["ImageSm"].ToString() != "")
+                            {
+                                p.ImageSm = ds.Tables[0].Rows[i]["ImageSm"].ToString();
+                            }
+
+                            if (ds.Tables[0].Rows[i]["AgeGroup"] != null && ds.Tables[0].Rows[i]["AgeGroup"].ToString() != "")
+                            {
+                                p.AgeGroup = ds.Tables[0].Rows[i]["AgeGroup"].ToString();
+                            }
+
+                            if (ds.Tables[0].Rows[i]["IsActive"] != null && ds.Tables[0].Rows[i]["IsActive"].ToString() != "")
+                            {
+                                p.IsActive = bool.Parse(ds.Tables[0].Rows[i]["IsActive"].ToString());
+                            }
+                            objlist.Add(p);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    ds.Dispose();
+                    con.Close();
+                    con.Dispose();
+                }
+                return objlist;
+            }
+        }
+
 
         public Product GetProductsById(int id)
         {

@@ -10,10 +10,16 @@ namespace DemoCode.Controllers
 {
     public class AddProductController : Controller
     {
+        Product objEditProduct = null;
+
+
         // GET: AddProduct
         public ActionResult Index()
         {
-            ViewData["product"] = null;
+            Data objData = new Data();
+            List<Category> categories = objData.GetCategories();
+            ViewData["product"] = objEditProduct;
+            ViewData["categories"] = categories;
             return View();
         }
 
@@ -21,8 +27,10 @@ namespace DemoCode.Controllers
         public ActionResult Edit(int id)
         {
             Data objData = new Data();
-            Product obj = objData.GetProductsById(id);
-            ViewData["product"] = obj;
+            objEditProduct = objData.GetProductsById(id);
+            List<Category> categories = objData.GetCategories();
+            ViewData["product"] = objEditProduct;
+            ViewData["categories"] = categories;
             return View("Index");
         }
 
@@ -49,7 +57,6 @@ namespace DemoCode.Controllers
         [HttpPost]
         public ActionResult UploadFile(HttpPostedFileBase file, Product obj)
         {
-            Product objProduct = new Product();
             Data objData = new Data();
             try
             {
@@ -58,9 +65,11 @@ namespace DemoCode.Controllers
                     string _FileName = Path.GetFileName(file.FileName);
                     string _path = Path.Combine(Server.MapPath("~/Content/Images"), _FileName);
                     file.SaveAs(_path);
-                    
-                    objProduct = objData.EditProductImage(obj.Id, _FileName);
-                    ViewData["product"] = objProduct;
+
+                    objEditProduct = objData.EditProductImage(obj.Id, _FileName);
+                    List<Category> categories = objData.GetCategories();
+                    ViewData["product"] = objEditProduct;
+                    ViewData["categories"] = categories;
                 }
                 ViewBag.Message = "File Uploaded Successfully!!";
                 return View("Index");
