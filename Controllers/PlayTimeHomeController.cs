@@ -23,5 +23,10 @@ namespace DemoCode.Controllers
 
             return View("Index");
         }
+
+        // post funciton here
+
+
+
     }
 }

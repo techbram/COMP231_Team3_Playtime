@@ -16,6 +16,11 @@ namespace DemoCode.Controllers
         // GET: AddProduct
         public ActionResult Index()
         {
+            if (Session["ValidateAdmin"] == null || Session["ValidateAdmin"].ToString().ToLower() != "true")
+            {
+                return RedirectToAction("Index", "NoAuth", new { area = "" });
+            }
+
             Data objData = new Data();
             List<Category> categories = objData.GetCategories();
             ViewData["product"] = objEditProduct;

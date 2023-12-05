@@ -12,6 +12,12 @@ namespace DemoCode.Controllers
         // GET: Category
         public ActionResult Index()
         {
+
+            if (Session["ValidateAdmin"] == null || Session["ValidateAdmin"].ToString().ToLower() != "true")
+            {
+                return RedirectToAction("Index", "NoAuth", new { area = "" });
+            }
+
             Data objData = new Data();
             List<Category> obj = objData.GetCategories();
             ViewData["Categories"] = obj;

@@ -11,7 +11,10 @@ namespace DemoCode.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+
+            Session["ValidateAdmin"] = null;
+            Session.Abandon();
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
     }
 }

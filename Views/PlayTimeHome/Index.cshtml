@@ -2,17 +2,21 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="jumbotron">
-    <img src="~/Content/Images/homepagebanner.jpg" height="200" />
+<div class="row">
+    <div class="col-lg-1">&nbsp;</div>
+    <div class="col-lg-10">
+        <img src="~/Content/Images/homepagebanner.jpg" height="200" />
+    </div>
+    <div class="col-lg-1">&nbsp;</div>
 </div>
-
+<br />
 @{
-    <div class="row">
+    <div class="row" style="padding-bottom:15px;" >
         @foreach (DemoCode.Models.Product obj1 in (List<DemoCode.Models.Product>
             )ViewData["cat1products"])
             {
-            <div class="col-lg-4">
-                <h4>@obj1.Name</h4>
+            <div class="col-lg-4" >
+                <span style="font-weight:800">@obj1.Name</span>
                 <h5>@obj1.Desc</h5>
                 <img height="120" src="~/Content/Images/@obj1.Imagelg" />
                 <h4>$@obj1.Price</h4>
@@ -25,7 +29,7 @@
             )ViewData["cat2products"])
             {
             <div class="col-lg-4">
-                <h4>@obj2.Name</h4>
+                <span style="font-weight:800">@obj2.Name</span>
                 <h5>@obj2.Desc</h5>
                 <img height="120" src="~/Content/Images/@obj2.Imagelg" />
                 <h4>$@obj2.Price</h4>
@@ -37,7 +41,7 @@
         @foreach (DemoCode.Models.Product obj3 in (List<DemoCode.Models.Product>)ViewData["cat3products"])
         {
             <div class="col-lg-4">
-                <h4>@obj3.Name</h4>
+                <span style="font-weight:800">@obj3.Name</span>
                 <h5>@obj3.Desc</h5>
                 <img height="120" src="~/Content/Images/@obj3.Imagelg" />
                 <h4>$@obj3.Price</h4>

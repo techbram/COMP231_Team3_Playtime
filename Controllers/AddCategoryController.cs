@@ -12,6 +12,11 @@ namespace DemoCode.Controllers
         // GET: AddCategory
         public ActionResult Index()
         {
+            if (Session["ValidateAdmin"] == null || Session["ValidateAdmin"].ToString().ToLower() != "true")
+            {
+                return RedirectToAction("Index", "NoAuth", new { area = "" });
+            }
+
             //Category obj = new Category();
             ViewData["Category"] = null;
             return View();

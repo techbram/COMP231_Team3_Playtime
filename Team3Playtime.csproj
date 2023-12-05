@@ -125,6 +125,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NoAuthController.cs" />
     <Compile Include="Controllers\PlayTimeHomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Data.cs" />
@@ -413,6 +414,7 @@
     <Content Include="Views\AddCategory\Index.cshtml" />
     <Content Include="Views\AddProduct\Index.cshtml" />
     <Content Include="Views\PlayTimeHome\Index.cshtml" />
+    <Content Include="Views\NoAuth\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
